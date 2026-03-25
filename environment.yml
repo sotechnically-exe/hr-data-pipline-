@@ -1,0 +1,17 @@
+name: da
+channels:
+  - default
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - scipy
+  - psycopg2
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - statsmodels
+  - ipython
+  - ipykernel
+  - pip
+  - requests
