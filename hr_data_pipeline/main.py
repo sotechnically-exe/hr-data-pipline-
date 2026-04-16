@@ -1,68 +1,47 @@
-def clean_heartrate_data(data: list) -> tuple:
-    """
-    Clean raw heart-rate data by removing malformed or impossible values.
-    """
-    pass
-    
-
-def average(data: list) -> float:
-    """
-    Calculate average of a list of integers using a for-loop. Assumes data is clean.
-    """
-    pass
-
-
-def median(data: list) -> float:
-    """
-    """
-    pass
-
-
-def range(data: list) -> float:
-    """
-    """
-    pass
-
-
-def rolling_avg(data: list, k: int) -> float:
-    """
-    CHALLENGE FUNCTION (Optional)
-    """
-    pass
+import stats
+from clean.py import clean_heartrate_data
+from visualization import plot_heartrate
 
 
 def run(file: str):
     """
-    Process heart rate data from the a file by cleaning and
-    calculating summary statistics. Print out final values.
-
-    Args:
-        filename (str): The path to the data file (e.g., 'data/phase0.txt').
-
-    Returns:
-        float, float, float: You will return the average, median, and range.
+    Process heart-rate data from a file by:
+      - reading raw values
+      - cleaning the data
+      - calculating summary statistics
+      - generating a line plot
     """
+
     data = []
 
-    # open file using file I/O and read it into the `data` list
-    object=open(file)
-    for line object:
-        print(open)
+    # Read raw values from the file
+    with open(file, "r") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                data.append(line)
 
-    # Use `clean_heartrate_data` to clean the data and remove invalid entries
+    # Clean the data
     cleaned_list, removed_values = clean_heartrate_data(data)
 
-    # calculate the average, median, and range of this file using the functions you've wrote
-    avg = average(cleaned_list)
-    med = median(cleaned_list)
-    ran = range(cleaned_list)
+    # Calculate statistics using the stats module
+    list_avg = stats.average(cleaned_list)
+    list_med = stats.median(cleaned_list)
+    list_ran = stats.range(cleaned_list)
+    list_var = stats.variance(cleaned_list)
+    list_std = stats.standard_deviation(cleaned_list)
 
-    
-    # print out your data quality measure to the console
-    ...
+    # Print results
+    print(f"\n--- Results for {file} ---")
+    print("Removed values:", removed_values)
+    print("Average:", list_avg)
+    print("Median:", list_med)
+    print("Range:", list_ran)
+    print("Variance:", list_var)
+    print("Standard Deviation:", list_std)
 
-    # print out your descriptive statistics to the console
-    ...
+    # Save plot
+    plot_heartrate(cleaned_list, f"{file}_plot.png")
 
 
 if __name__ == "__main__":

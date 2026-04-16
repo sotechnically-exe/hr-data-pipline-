@@ -15,7 +15,7 @@ def clean_heartrate_data(data: list) -> tuple:
     All valid values are added to the `cleaned` list. At the end, the function
     returns both lists so I can measure data quality later.
 
-    NOTE: I originally got stuck on why we use `.append()`. I learned that
+    I originally got stuck on why we use `.append()`. I learned that
     lists need methods like `.append()` to add items, and writing something like
     `removed(value)` is not valid Python because lists are not functions.
     """
@@ -29,7 +29,7 @@ def clean_heartrate_data(data: list) -> tuple:
         # If it fails, the value is not a number and must be removed.
         try:
             v = int(value)
-       except:
+        except:
             removed.append(value)  # add the bad value to the removed list
             continue               # skip the rest of this loop iteration
 
@@ -66,9 +66,9 @@ def average(data: list) -> float:
     return total / count if count > 0 else 0
 
 def median(data: list) -> float:
+    
     """
-
-   ''' Calculate the median (middle value) of a list of integers.
+    Calculate the median (middle value) of a list of integers.
 
     First, I sort the list because the median only makes sense when the values
     are in order. If the list has an odd number of elements, the median is the
@@ -123,7 +123,7 @@ def run(file: str):
         float, float, float: You will return the average, median, and range.
     """
     
-     """
+    """
     Read heart-rate data from a file, clean it, and calculate summary statistics.
 
     This function handles the full workflow:
@@ -143,12 +143,13 @@ def run(file: str):
 
     # open file using file I/O and read it into the `data` list
     with open(file, "r") as f:
-    for line in f:
-        line = line.strip()   # remove spaces and newline characters
-        if line:              # skip empty lines
-            data.append(line) # store the raw value in the list
+        for line in f:
+            line = line.strip()   # remove spaces and newline characters
+            if line:              # skip empty lines
+              data.append(line) # store the raw value in the list
 
     # Use `clean_heartrate_data` to clean the data and remove invalid entries
+
     cleaned_list, removed_values = clean_heartrate_data(data)
 
     # calculate the average, median, and range of this file using the functions you've wrote
@@ -158,21 +159,14 @@ def run(file: str):
 
     
     # print out your data quality measure to the console
-    ...
-
-    # I got stuck here because I wasn't sure exactly what format to use.I know I need to use cleaned_list and removed_values.
-...
-
-
-
 
     # print out your descriptive statistics to the console
-    ...
-    # This section should print the average, median, and range that I calculated.
-    # I understand the values (avg, med, ran), but I'm not fully sure how to format.
+ 
+    """ 
+    I got stuck here because I wasn't sure exactly what format to use.I know I need to use cleaned_list and removed_values.
+    I also know I need to print out the average, median, and range. I just wasn't sure how to format it all together in a way that is clear and readable.
+    """
 
-
-...
 
 
 
